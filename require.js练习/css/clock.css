@@ -1,0 +1,99 @@
+* {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .main {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            margin: 50px auto;
+            line-height: 30px;
+            font-size: 14px;
+            color: #1a1a1a;
+            border-radius: 200px;
+            background-color: #00ff90;
+        }
+        
+        .under > div, .hour, .minu, .sec {
+            width: 11px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 195px;
+        }
+        
+        .under > div.s60:before {
+            content: "";
+            width: 1px;
+            height: 11px;
+            background-color: #4c4c4c;
+            position: absolute;
+            top: 0;
+            left: 5px;
+        }
+        
+        .under > div.s60:after {
+            content: "";
+            display: inline-block;
+            width: 1px;
+            height: 11px;
+            background-color: #4c4c4c;
+            position: absolute;
+            bottom: 0;
+            left: 5px;
+        }
+        .under > div.s12 p {
+            width: 20px;
+            height: 20px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            left: -5px;
+            text-align: center;
+        }
+        
+        .hour p:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -9px;
+            left: 0;
+            border-bottom: 10px solid #ccc;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+        }
+        
+        .minu p:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -9px;
+            left: 0;
+            border-bottom: 10px solid #ccc;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+        }
+        
+        .hour p {
+            width: 8px;
+            height: 140px;
+            background-color: #ccc;
+            position: relative;
+            margin: 80px auto 0;
+        }
+        
+        .minu p {
+            width: 6px;
+            height: 190px;
+            background-color: #ccc;
+            position: relative;
+            margin: 30px auto 0;
+        }
+        
+        .sec p {
+            width: 1px;
+            height: 210px;
+            background-color: #ccc; 
+            margin: 10px auto 0;
+        }

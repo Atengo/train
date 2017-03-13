@@ -1,0 +1,23 @@
+{
+	"index.html": {
+		"resources": [
+			"img/shuijiao.jpg",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"img/muwu.jpg",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"tpl/tpl.html"
+		]
+	},
+	"tpl/tpl.html": {
+		"resources": [
+			"img/shuijiao.jpg",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"img/muwu.jpg",
+			"css/mui.min.css"
+		]
+	}
+}

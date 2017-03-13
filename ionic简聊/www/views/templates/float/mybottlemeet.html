@@ -1,0 +1,24 @@
+﻿<ion-view nav-direction="forward" view-title="单人瓶子捡到人" class="{{setted.view_bg}}">
+  <ion-content  delegate-handle="mymeet" class="n-list">
+    <ion-refresher pulling-text="上一页" ng-if="page.pageNo!=1" on-refresh="getprevpage()"></ion-refresher>
+    <ion-refresher pulling-text="刷新中..." ng-if="page.pageNo==1" on-refresh="getmybottlemeet(1)"></ion-refresher>
+    <ion-list>
+      <div class="list list-inset" ng-repeat="item in mybottlemeet">
+        <ion-item item="item" class="item item-avatar item-remove-animate" href="#/app/message/{{item.meet._id}}/1/{{item.meet.account}}">
+          <img src="{{item.setting.setting.avatar}}">
+          <h2>{{item.setting.setting.name}}<span class="item-note">
+            {{item.time}}
+          </span></h2>
+          <p>{{item.setting.setting.sign}}</p>
+        </ion-item>
+      </div>
+    </ion-list>
+    <div class="card" ng-if="mybottlemeet.length==0">
+      <div class="item item-body">
+        <p class="textalign-center">还没有人捡到或打开你的瓶子！</p>
+      </div>
+    </div>
+    <p class="textalign-center" ng-if="note.alloaded&&page.pageNo!=1">没有更多数据了</p>
+    <ion-infinite-scroll class="ion-infinite-note" distance="-2%" ng-if="!page.alloaded" on-infinite="getnextpage()"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

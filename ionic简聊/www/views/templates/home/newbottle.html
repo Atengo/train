@@ -1,0 +1,65 @@
+<ion-modal-view class="newbottle-wr">
+    <ion-header-bar class="bar bar-header bar-positive">
+        <!--<button class="button button-clear ion ion-image button-addimg button-large button-primary" ng-show="!NewBottle.hasimg" ng-click="NewBottle.hasimg=!NewBottle.hasimg"></button>-->
+        <h1 class="title">写漂流话题</h1>
+        <button class="button button-clear ion-close-round button-primary" ng-click="closenewbottle()"></button>
+    </ion-header-bar>
+    <ion-content class="padding" delegate-handle="bottle">
+        <div class="list" ng-class="{true:'float-animate',false:''}[CreateCtrl.isFloating]">
+            <label class="item item-input item-newbottle-input" ng-class="{true:'center',false:''}[NewBottle.textcenter]">
+              <textarea placeholder="输入内容"class="new_bottle"ng-model="NewBottle.Bottle_Text"></textarea>
+            </label>
+            <!--<div class="list card bottle-card-img" ng-show="NewBottle.hasimg">
+            <div class="item item-divider">
+              话题图片
+              <button class="button button-clear button-bottleimg-close  ion ion-close button-primary" ng-click="NewBottle.hasimg=!NewBottle.hasimg"></button>
+            </div>
+            <div class="item item-image">
+              <img src="views/img/ice.png">
+            </div>
+          </div>-->
+            <div class="list card light-bg" ng-click="changeSetting()" ng-show="!CreateCtrl.setting">
+                <div class="item">
+                    属性设置<span class="item-note ion-ios-arrow-right"style="margin-top:4px;"></span>
+                </div>
+            </div>
+            <div class="list card light-bg" ng-show="CreateCtrl.setting">
+                <div class="item item-divider" ng-click="changeSetting()" >
+                    设置话题属性
+                </div>
+                <ion-toggle ng-click="NewBottle.textcenter=!NewBottle.textcenter" ng-checked="NewBottle.textcenter">
+                    全文居中
+                </ion-toggle>
+                <div class="item" ng-click="choosetype()">
+                    话题类型
+                    <span class="item-note">
+                   {{NewBottle.settypetext}}
+                 </span>
+                </div>
+                <div class="list card card-chat" ng-show="NewBottle.settype==1">
+                    <div class="item item-body item-bottle">
+                        设置为单人话题，每次只能一个人捡到该话题并进行单人聊天!
+                    </div>
+                </div>
+                <div class="list card card-chat" ng-show="NewBottle.settype==2">
+                    <div class="item item-body item-bottle">
+                        设置为多人话题，每次可以多人捡到该话题并进行多人聊天!
+                    </div>
+                </div>
+                <div class="item" ng-click="choosetime()">
+                    话题漂流时间
+                    <span class="item-note">
+                   {{NewBottle.timeval}}
+                 </span>
+                </div>
+                <div class="item" ng-click="chooseman()">
+                    扔给多少人
+                    <span class="item-note">
+                   {{NewBottle.tomanval}}人
+                 </span>
+                </div>
+            </div>
+            <button class="button button-full button-positive"ng-click="createBottle(NewBottle)">写好了，扔到海里</button>
+        </div>
+    </ion-content>
+</ion-modal-view>

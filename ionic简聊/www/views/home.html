@@ -1,0 +1,18 @@
+﻿<ion-view title="首页">
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <img ng-click="zonenavshow()" src="{{account.avatar?account.avatar:'views/img/ship.png'}}" alt="">
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-tabs class="tabs-icon-top tabs-light tabs-bottom tabs-home">
+    <ion-tab title="朋友" icon="ion-android-contacts" href="#/app/home/friend"ng-click="changehometab(0,'friend')">
+      <ion-nav-view name="friend-tab"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="话题" tab-ctive icon="ion-ios-analytics" href="#/app/home/seaside"ng-click="changehometab(1,'seaside')">
+      <ion-nav-view name="seaside-tab"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="消息" icon="ion-android-chat" badge="mesdatacount.allcountmes" badge-style="asser-bg" href="#/app/home/messdata"ng-click="changehometab(2,'messdata')">
+      <ion-nav-view name="messdata-tab"></ion-nav-view>
+    </ion-tab>
+ </ion-tabs>
+</ion-view>

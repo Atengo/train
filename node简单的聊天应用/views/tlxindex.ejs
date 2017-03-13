@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html charset=utf-8" />
+    <title>特蕾新分园</title>
+    <link type="text/css"rel="stylesheet"href="css/css.css" />
+    <script type="text/javascript"src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript"src="js/self_slide.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".banner").slide({
+                affect: 3,         //1：上下滚动; 2:幕布式; 3:左右滚动；4：淡入淡出
+                time: 4000,       //间隔时间
+                setclass: "noshow myulctl",
+                left: -972,       //每次向左移动距离
+                dot_text: false
+            });
+            $(".con4-list").slide({
+                affect: 3,         //1：上下滚动; 2:幕布式; 3:左右滚动；4：淡入淡出
+                time: 4000,       //间隔时间
+                setclass: "noshow myulctl",
+                left: -500,       //每次向左移动距离
+                dot_text: false
+            });
+            checknavshow();
+            $(window).scroll(function () {
+                checknavshow();
+            });
+
+            function checknavshow() {
+                var st = $(window).scrollTop();
+                if (st >= 200) {
+                    $(".nav2-wr").show();
+
+                }
+                if (st <= 200) {
+                    $(".nav2-wr").hide();
+                }
+
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="head-wr pore">
+        <div class="head pore">
+            <a name="00"id="00"></a>
+            <div class="logo">特蕾新裕锦幼儿园</div>
+            <div class="nav">
+                <a href="#">集团首页</a>
+                <a href="#" class="act">首页</a>
+                <a href="#">关于我们</a>
+                <a href="#">园所动态</a>
+                <a href="#">精彩活动</a>
+                <a href="#">特色课程</a>
+                <a href="#">招生信息</a>
+                <a href="#">幼儿健康</a>
+                <a href="#">联系我们</a>
+            </div>
+        </div>
+    </div>
+    <div class="banner-wr pore">
+        <div class="banner-w pore">
+            <div class="banner pore">
+                <ul>
+                    <li><a href="#"><img src="img/banner.png"/></a></li>
+                    <li><a href="#"><img src="img/banner.png"/></a></li>
+                    <li><a href="#"><img src="img/banner.png"/></a></li>
+                    <li><a href="#"><img src="img/banner.png"/></a></li>
+                </ul>
+            </div>
+            <div class="prev poab"id="pre"></div>
+            <div class="next poab"id="nex"></div>
+            <a class="login poab">登录</a>
+            <a class="online poab"></a>
+        </div>
+        <div class="phone-wr pore">
+            <div class="phone pore">
+                <p class="p1">特蕾新裕锦幼儿园幼儿成长热线</p>
+                <p class="p2"><i>0755-25885410</i></p>
+                <p class="p3">
+                    <a href="#">收藏我们</a>
+                    <a href="#">联系我们</a>
+                    <a href="#">查看地图</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="content-wr pore">
+        <div class="con-wr con1-wr pore">
+            <div class="con1-bg poab"></div>
+            <div class="con-w pore">
+              <div class="con1 poab">
+                  <a id="01"name="01"></a>
+                  <div class="con1-fl fl pore">
+                      <ul>
+                          <li><a href="#">DIY手工课</a></li>
+                          <li><a href="#" class="act">DIY手工课</a></li>
+                          <li><a href="#">DIY手工课</a></li>
+                          <li><a href="#">DIY手工课</a></li>
+                          <li><a href="#">DIY手工课</a></li>
+                          <li><a href="#">DIY手工课</a></li>
+                      </ul>
+                  </div>
+                  <div class="con1-fr fr pore">
+                      <img src="img/img001.png"/>
+                      <p class="p1">DIY手工课</p>
+                      <p class="p2">适合班级：中班、大班</p>
+                      <p class="p3">课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍......
+                          <a href="#">了解更多<b>>></b></a></p>
+                      <p class="p4-more"><a class="more"></a></p>
+                  </div>
+                  <p class="cb"></p>
+              </div>
+            </div>
+        </div>
+        <div class="con-wr con2-wr pore">
+            <div class="con-w pore">
+              <div class="con2 poab">
+                  <a id="02"name="02"></a>
+                  <div class="con2-w pore">
+                  <div class="con2-fl fl pore">
+                      <img src="img/img002.png"/>
+                  </div>
+                  <div class="con2-fr fr pore">
+                      <p class="p1">特蕾新裕锦幼儿园</p>
+                      <p class="p2">  深圳市宝安区新安街道特蕾新裕锦幼儿园是深圳宝安中心区西城上筑小区配套幼儿园，创办于2007年8月。园内占地面积3051.84平方米，建筑面积2933.5平方米，户外活动面积2922平方米，幼儿园外部环境整洁美观，园内环境优美舒适、布局合理......
+                          <a href="#">了解更多<b>>></b></a></p>
+                  </div>
+                  </div>
+                  <p class="cb"></p>
+              </div>
+            </div>
+        </div>
+       <div class="con-wr con3-wr pore">
+           <div class="con3-bg poab"></div>
+           <div class="con3-bg2 poab"></div>
+            <div class="con-w pore">
+              <div class="con3 poab">
+                  <a id="03"name="03"></a>
+                  <div class="con3-fl fl pore">
+                      
+                  </div>
+                  <div class="con3-fr con3-fr1 fr pore">
+                      <img src="img/img001.png"/>
+                      <p class="p1">DIY手工课</p>
+                      <p class="p2">2015-2-20</p>
+                      <p class="p3">课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍......
+                        </p>
+                      <p class="p4-more"><a class="more"></a></p>
+                  </div>
+                  <div class="con3-fr con3-fr2 fr pore">
+                      <img src="img/img001.png"/>
+                      <p class="p1">DIY手工课</p>
+                      <p class="p2">2015-2-20</p>
+                      <p class="p3">课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍......
+                         </p>
+                      <p class="p4-more"><a class="more"></a></p>
+                  </div>
+                  <p class="cb"></p>
+              </div>
+            </div>
+        </div>
+        <div class="con-wr con4-wr pore">
+            <div class="con-w pore">
+              <div class="con4 pore">
+                  <a id="04"name="04"></a>
+                  <div class="con4-fl fl pore">
+                      <div class="con4-list-wr pore">
+                      <div class="con4-list pore">
+                          <ul>
+                              <li><img src="img/img001.png"/><a href="#">1111111</a></li>
+                              <li><img src="img/img001.png"/><a href="#">1111111</a></li>
+                              <li><img src="img/img001.png"/><a href="#">1111111</a></li>
+                          </ul>
+                      </div>
+                      <div class="pre poab"id="pre"></div>
+                      <div class="nex poab"id="nex"></div>
+                      </div>
+                      
+                  </div>
+                  <div class="con4-fr fr pore">
+                      <marquee width="330px"height="230px"scrollamount="2" direction="up"behavior="scroll" scrolldelay="120">课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍课程内容介绍</marquee>
+                  </div>
+                  <p class="cb"></p>
+              </div>
+            </div>
+        </div>
+        <div class="con5-wr pore">
+        <div class="con5-bg poab"></div>
+        <div class="con5-bg2 poab"></div>
+        <div class="con5 pore">
+            <a id="05"name="05"></a>
+            <div class="con5-fl fl pore"><img src="img/map.png"/></div>
+            <div class="con5-fr fr pore">
+                <p>地    址：深圳市宝安中心区创业一路西城上筑小区内<br />
+                   电    话：0755-25885410、400-25885410    <br />
+                   邮    箱：25885410@163.com</p>
+                <p>公交路线：<br />
+                    395路;606路;615路;629路;630路;797路;m245路;m250</p>
+                <div class="case">
+                    <p>特蕾新分园：<br />
+                        <select></select></p>
+                </div>
+            </div>
+            <p class="cb address"><a href="#">查看百度地图</a></p>
+        </div>
+    </div>
+    </div>
+    <div class="foot-wr pore">
+        <div class="foot-foot poab">
+            版权归深圳市特蕾新教育集团深圳市裕锦幼儿园所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术支持：深圳市金生科技有限公司
+        </div>
+    </div>
+    <div class="nav2-wr pofix">
+        <div class="nav2 pore">
+            <a href="#01">特色课程</a>
+            <a href="#02">园所介绍</a>
+            <a href="#03">精彩活动</a>
+            <a href="#04">园所环境</a>
+            <a href="#05">联系方式</a>
+            <a href="#00" class="gotop"title="返回顶部"></a>
+        </div>
+    </div>
+</body>
+</html>

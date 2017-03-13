@@ -1,0 +1,12 @@
+
+
+<% if (userss.length>0) { %>
+    <% userss.forEach(function(name){ %>
+      <a><%= name.name %></a>  
+      <a><%= name.password %></a> 
+      <a><%= name.update %></a> <br/>
+    <% }) %> 
+    <% } %>
+    <% if (!userss.length) { %>
+      <a>还没有用户注册</a>  
+    <% } %>

@@ -1,0 +1,28 @@
+﻿<ion-view view-title="查看记事" class="{{setted.view_bgwhite}}">
+  <ion-content>
+    <!-- 文本记事查看-->
+    <div>
+      <ion-list>
+        <div class="list card card-seenotetext">
+          <ion-item item="item" class="item item-remove-animate">
+            <h2 class="textalign-center wrap">{{notedetail.title}}<br /><span class="item-note item-note-note">
+            {{notedetail.time}}
+        </span></h2>
+          </ion-item>
+          <div class="item item-body note-body" ng-class="{true:'textalign-center',false:''}[notedetail.textcenter]">
+            <pre ng-bind-html="notedetail.detail|trustHtml"></pre>
+          </div>
+        </div>
+      </ion-list>
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="right" class="bar-light textalign-right">
+    <label class="item-input-wrapper item-input-wrapper-trp"></label>
+    <button class="ion ion-locked ion-left button button-positive button-l" ng-if="note.notelists[i].lock" ng-click="removesecret(id,i)">解除私密</button>
+    <button class="ion ion-unlocked ion-left button button-l" ng-if="!note.notelists[i].lock" ng-click="setsecret(id,i)">转为私密</button>
+    <a class="button button-l" href="#/app/zone/addnote/edit/{{id}}">编辑</a>
+    <button class="button button-l" ng-click="delete_seenote(id,i)">删除</button>
+    <button class="button button-l" ng-click="$ionicGoBack()">返回</button>
+    <a class="button button-l button-positive" nav-direction="forward" href="#/app/message/{{notedetail._id}}/4/{{notedetail.account}}">查看聊天</a>
+  </ion-footer-bar>
+</ion-view>

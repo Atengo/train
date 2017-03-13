@@ -1,0 +1,62 @@
+li{
+    list-style:none;
+}
+/*倒计时 */
+ 
+ .countdown {
+     width: 50px;
+     height: 50px;
+     margin: 20px auto;
+     position: relative;
+ }
+ .pie {
+     width: 50px;
+     height: 50px;
+     background-color: rgba(255, 153, 0, 1);
+     border-radius: 50%;
+     position: absolute;
+ }
+ .pie1 {
+     clip: rect(0px, 50px, 50px, 25px);
+     -webkit-transform: rotate(0deg);
+ }
+ 
+ .pie2 {
+     clip: rect(0px, 25px, 50px, 0px);
+     -webkit-transform: rotate(0deg);
+ }
+ .hold {
+     width: 50px;
+     height: 50px;
+     position: absolute;
+     z-index: 1;
+ }
+ .hold1 {
+     clip: rect(0px, 50px, 50px, 25px);
+ }
+ .hold2 {
+     clip: rect(0px, 25px, 50px, 0px);
+ }
+ .bg {
+     width: 50px;
+     height: 50px;
+     background-color: #ccc;
+     border-radius: 50%;
+     position: absolute;
+ }
+ 
+ .time {
+     width: 40px;
+     height: 40px;
+     margin: 5px 0 0 5px;
+     background-color: #fff;
+     border-radius: 50%;
+     position: absolute;
+     z-index: 1;
+     text-align: center;
+     line-height: 40px;
+     font-family: "Book Antiqua", Palatino, serif;
+     font-size: 24px;
+     font-weight: bold;
+     color: #ccc
+ }

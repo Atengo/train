@@ -1,0 +1,29 @@
+<ion-modal-view  class="newbottle-wr">
+    <ion-header-bar class="bar bar-header bar-positive">
+        <!--<button class="button button-clear ion ion-image button-addimg button-large button-primary" ng-show="!NewBottle.hasimg" ng-click="NewBottle.hasimg=!NewBottle.hasimg"></button>-->
+        <h1 class="title">写连载回复</h1>
+        <button class="button button-clear ion-close-round button-primary" ng-click="serializemodalclose()"></button>
+    </ion-header-bar>
+    <ion-content class="padding" delegate-handle="bottle">
+        <div class="list">
+            <label class="item item-input item-newbottle-input" ng-class="{true:'center',false:''}[chat.mescenter]">
+              <textarea placeholder="请填写连载回复内容..." class="new_bottle" ng-model="chat.serializemes"></textarea>
+            </label>
+            <!--<div class="list card bottle-card-img" ng-show="NewBottle.hasimg">
+            <div class="item item-divider">
+              话题图片
+              <button class="button button-clear button-bottleimg-close  ion ion-close button-primary" ng-click="NewBottle.hasimg=!NewBottle.hasimg"></button>
+            </div>
+            <div class="item item-image">
+              <img src="views/img/ice.png">
+            </div>
+          </div>-->
+            <div class="list card light-bg">
+                <ion-toggle ng-click="chat.mescenter=!chat.mescenter" ng-checked="chat.mescenter">
+                    全文居中
+                </ion-toggle>
+            </div>
+            <button class="button button-full button-positive" ng-click="sendmessage()">回复</button>
+        </div>
+    </ion-content>
+</ion-modal-view>

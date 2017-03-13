@@ -1,0 +1,35 @@
+﻿<ion-view hide-back-button="true" view-title="" class="{{setted.view_bg}}">
+  <ion-nav-title>
+    <div class="seasidetab"><a href="#/app/zone/notelist" class="act">我的记事</a><a href="#/app/zone/focusnote">关注记事</a></div>
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-reply-all" nav-direction="back" href="#/app/home/{{hometab.tab}}"></a>
+  </ion-nav-buttons>
+  <ion-content delegate-handle="notelist"  class="n-list">
+    <ion-refresher pulling-text="上一页" ng-if="note.pageNo!=1" on-refresh="getprevpage()"></ion-refresher>
+    <ion-refresher pulling-text="刷新中..." ng-if="note.pageNo==1" on-refresh="note.getnotelist(1)"></ion-refresher>
+    <ion-list>
+      <div class="list list-inset card" ng-repeat="item in note.notelists">
+        <ion-item item="item" class="item item-remove-animate" href="#/app/zone/seenote/{{item._id}}/{{$index}}">
+          <h2>{{item.title}}<span class="item-note">
+            {{item.time}}
+          </span></h2>
+          <span class="icon iconlock ion-locked" ng-if="item.lock"></span>
+          <ion-option-button class="button-assertive" ng-click="delete_note(item._id,$index)">
+            删除
+          </ion-option-button>
+        </ion-item>
+        <div class="item item-body">
+          <a class="item-content" href="#/app/zone/seenote/{{item._id}}/{{$index}}">
+            <p>{{item.introduction}}</p>
+          </a>
+        </div>
+      </div>
+    </ion-list>
+    <p class="textalign-center" ng-if="note.alloaded&&note.pageNo!=1">没有更多数据了</p>
+    <ion-infinite-scroll class="ion-infinite-note" distance="-2%" ng-if="!note.alloaded" on-infinite="getnextpage()"></ion-infinite-scroll>
+  </ion-content>
+  <ion-footer-bar class="bar-light">
+    <a class="button button-icon ion-plus button-addnote" ng-click="addnewnote()"></a>
+  </ion-footer-bar>
+</ion-view>

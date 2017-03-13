@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="/stylesheets/main.css">
+<script src="/javascripts/jquery.js"></script>
+<script src="/javascripts/bootstrap.js"></script>
+<span style="display:none" id="user"><%=user%></span>
+    <div class="wrapper">
+     <div class="msg-wrap">
+      <div class="historyMsg"room="public">
+          <div class="banner">
+              <h4>公共大厅</h4>
+              <span class="status"></span>
+          </div>
+          <div class="Child-Msg">
+          </div>
+      </div>
+    </div>
+      <div class="controls" >
+        <div class="items">
+          <input id="colorStyle" type="color" placeHolder='#000' title="font color" />
+          <input id="clearBtn" type="button" value="clear" title="clear screen" />
+        </div>
+        <textarea id="messageInput" placeHolder="enter to send"></textarea>
+        <input id="sendBtn" type="button" value="SEND">
+        <div id="emojiWrapper">
+        </div>
+      </div>
+      <div class="room">
+        <p><a id="co-room"class="co-room">共<i>0</i>个房间</a><a id="cr-room"class="cr-room fr">创建房间</a></p>
+        <ul class="room-zone"id="room-zone">
+        </ul>
+        <p><a id="myco-room"class="co-room">我加入的房间</a></p>
+          <ul class="room-zone"id="myroom-zone">
+              <li roomname="public" type="0">
+                  <a class="item-room">公共大厅</a><a class="fr allname">查看在线人员</a>
+                  <p class="room-per">
+                  </p>
+              </li>
+          </ul>
+          <p><a id="prco-room"class="co-room">我的私聊</a></p>
+          <ul class="room-zone"id="priroom-zone">
+          </ul>
+      </div>
+        <div id="loginWrapper">
+            <div id="nickWrapper">
+                <form method="post" action="/login">
+                <p id="Linfo">connecting to server...</p>
+                <input type="text"placeHolder="输入用户名" id="username" name="username">
+                <br/>
+                <input type="password"placeHolder="输入密码" id="password" name="password">
+                <br/>
+                <input type="submit" value="登录" id="loginBtn" />
+                </form>
+            </div>
+        </div>
+        <div id="CroomWrapper">
+            <div class="crom">
+                    <p id="Croom-info"></p>
+                    <input type="text"placeHolder="输入房间名" id="Croomname" name="Croomname">
+                    <br/>
+                    <input type="submit" value="确定" id="CroomBtn" />
+                    <input type="submit" value="取消" id="DroomBtn" />
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/hichat.js"></script>
+    <script>
+      $(".allname").click(function(){
+        var a=$(this).siblings(".room-per");
+        var dis= a.css("display");
+        if(dis=="none"){
+          a.slideDown(250);
+        }
+        else{
+          a.slideUp(250);
+        }
+      });
+    </script>

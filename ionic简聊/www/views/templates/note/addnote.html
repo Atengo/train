@@ -1,0 +1,20 @@
+﻿<ion-view view-title="添加文本记事" class="{{setted.view_bgwhite}}">
+  <ion-content class="has-header has-footer addtextnote">
+    <div class="list list-addimgtitle">
+      <label class="item item-input item-input-edit">
+          <input type="text" class="note-inputtext" ng-model="notedetail.title" placeholder="输入标题"value="{{notedetail.title}}">
+          <a class="addnote-time">{{notedetail.time}}</a>
+        </label>
+    </div>
+    <div class="item item-body text-full" >
+    <textarea class="textarea-full"  placeholder="输入内容" ng-class="{true:'textalign-center',false:''}[notedetail.textcenter]"ng-bind-html="notedetail.detail|trustHtml" ng-model="notedetail.detail"></textarea>
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="left" class="bar-light">
+    <label class="item-input-wrapper item-input-wrapper-trp"></label>
+    <button class="button button-small button-l" ng-click="notedetail.textcenter=!notedetail.textcenter">全文居中</button>
+    <button class="ion ion-left button button-l" ng-class="{true:'ion-locked button-positive',false:'ion-unlocked'}[notedetail.lock]" ng-if="textnotetype=='add'" ng-click="notedetail.lock=!notedetail.lock">私密日记</button>
+    <button class="button button-small button-positive button-l" ng-click="createnote()" ng-if="textnotetype=='add'">保存</button>
+    <button class="button button-small button-positive button-l" ng-click="savenote()" ng-if="textnotetype=='edit'">保存</button>
+  </ion-footer-bar>
+</ion-view>

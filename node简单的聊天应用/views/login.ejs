@@ -1,0 +1,39 @@
+<div class="container">
+<form class="form-horizontal" method="post">
+  <fieldset>
+    <legend>用户登录</legend>
+    <div class="control-group">
+      <label class="control-label" for="username">用户名</label>
+      <div class="controls">
+        <input type="text" class="input-xlarge" id="username" name="username">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="password">密码</label>
+      <div class="controls">
+        <input type="password" class="input-xlarge" id="password" name="password">
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">登录</button>
+    </div>
+  </fieldset>
+</form>
+</div>
+<script>
+//判断数据
+<%switch(err){
+  case 1:%>
+   alert("密码错误");
+   <%
+   break;
+   case 2:%>
+   alert("该用户不存在");
+   <%
+   break;
+   case 3:%>
+   alert("登录成功");
+   location.href="http://localhost:3000/index"
+<%break;
+}%>
+</script>

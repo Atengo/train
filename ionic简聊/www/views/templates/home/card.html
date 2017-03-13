@@ -1,0 +1,55 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">查看名片</h1>
+        <button class="button button-clear button-primary" ng-click="firendcard.closeshowcard()">取消</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <div class="item item-divider">
+                基本信息
+            </div>
+            <a class="item item-avatar" href="#">
+                <img src="{{card.avtar}}">
+                <h2>{{card.niname}}</h2>
+                <p class="p-little">注册时间：{{card.createtime}}</p>
+            </a>
+            <div class="list">
+                <div class="item item-divider">
+                    签名：
+                </div>
+                <a class="item" href="#">
+              {{card.sign}}
+           </a>
+            </div>
+
+            <a class="item  item-bt" href="#">
+              出生城市
+             <span class="item-note">
+               {{card.birthcity}}
+             </span>
+           </a>
+            <a class="item" href="#">
+              居住城市
+             <span class="item-note">
+               {{card.livecity}}
+             </span>
+           </a>
+            <a class="item" href="#">
+              生日
+             <span class="item-note">
+               {{card.age}}
+             </span>
+           </a>
+            <a class="item" href="#" ng-show="card.isfriend">
+              加友时间
+             <span class="item-note">
+               {{card.time}}
+             </span>
+           </a>
+           <button ng-if="card.shield" class="button button-default button-full" ng-click="firendcard.unshield(card.account)">取消屏蔽</button>
+           <button ng-if="!card.shield" class="button button-positive button-full" ng-click="firendcard.addshield(card.account)">屏蔽此人</button>
+           <button ng-show="!card.isfriend" class="button button-positive button-full" ng-click="firendcard.addfriend(card.account)">加为朋友</button>
+           <p class="tipoff"><span ng-click="manage.tipoff(0,card.account)">举报此人？</span></p>
+        </div>
+    </ion-content>
+</ion-modal-view>

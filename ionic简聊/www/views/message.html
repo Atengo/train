@@ -1,0 +1,124 @@
+﻿<ion-view title="" class="{{setted.view_bg}} chattitle">
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <a class="button button-icon icon ion-reply-all" nav-direction="back" href="#/app/home/{{hometab.tab}}"></a>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-icon ion-ios-paper-outline" ng-show="!noteshow&&!chat.note.del" ng-click="noteshowctl()"></button>
+    </ion-nav-buttons>
+    <p class="chat-title"><span class="chattitloading"><ion-spinner icon="ios" class="spinner chatloading" ng-if="chat.disconnect||chat.firstload"></span></ion-spinner>{{chat.name}}<span ng-if='chat.showstate'>[{{chat.state}}]</span>&nbsp;</p>
+  </ion-nav-bar>
+  <ion-content class="has-footer" delegate-handle="message" paging="false" on-scroll="onscroll()" on-scroll-complete="stoponscroll()">
+    <ion-refresher pulling-text="加载中..." ng-if="!chat.loadbeforeall" on-refresh="loadmore()"></ion-refresher>
+    <!--瓶子或日记图文-->
+    <ion-list ng-if="!chat.note.del">
+      <div class="list list-inset card card-chatn" ng-if="chat.note&&noteshow">
+        <ion-item class="item item-avatar">
+          <img src="{{chat.note.avatar}}" ng-click="firendcard.showcard(chat.note.account)" />
+          <h2>{{chat.note.title}}</h2>
+          <p>
+            {{chat.note.time}}
+          </p>
+        </ion-item>
+        <div class="item item-body">
+          <a class="item-content">
+            <pre class="bottle_intro" ng-click="noteshowctl()" ng-class="{true:'textalign-center'}[chat.note.textcenter]">{{chat.note.detail}}</pre>
+          </a>
+        </div>
+        <div class="item item-image" ng-show="chat.note.hasimg">
+          <img src="{{chat.note.imgurl}}">
+        </div>
+        <div class="item item-body tipoff">
+          <p class="tipoff"><span ng-click="manage.tipoff(globaltype,fromId)">举报？</span></p>
+        </div>
+      </div>
+    </ion-list>
+    <div class="list list-inset card card-chatn" ng-if="chat.note.del">
+      <div class="item item-body">
+        <p ng-if="!chat.note.errtext">该话题已经被删除</p>
+        <p ng-if="chat.note.errtext">{{chat.note.errtext}}</p>
+      </div>
+    </div>
+    <p ng-show="chat.loadbeforeall" class="loadbeforeall">没有更多了</p>
+    <!--好友聊天-->
+    <div class="padding">
+      <div ng-repeat="item in respond|orderBy:'createtime'">
+        <!--连载回复-->
+        <div class="list list-inset card item-serialize" ng-if="item.mestype=='serialize'">
+          <ion-item class="item item-body  item-avatar">
+            <img src="{{chat.note.avatar}}" /><p>{{item.sendtime}}</p>
+          </ion-item>
+          <div class="item item-body">
+            <a class="item-content">
+              <pre class="bottle_intro" ng-class="{true:'textalign-center'}[item.textcenter]">{{item.mes}}</pre>
+            </a>
+          </div>
+          <div class="item item-image" ng-show="item.imgurl">
+            <img src="{{item.imgurl}}">
+          </div>
+        </div>
+
+        <!--非连载回复-->
+        <!--回复的我的-->
+        <div  class="row" ng-if="item.account!=clientAccount&&item.mestype!='serialize'" ng-class="{true:'left-chat',false:'right-chat'}[item.account!=clientAccount]">
+          <div class="col col-left">
+            <a class="item item-avatar item-avtar-chat" ng-click="firendcard.showcard(item.account)">
+              <img src="{{chat.avatar[item.account]}}">
+            </a>
+          </div>
+          <div class="col col-80 col-right">
+            <div class="sendmectrl"><span class="sendmestip"> {{item.sendtime}}</span></div>
+            <div class="card card-chat">
+              <div class="item item-text-wrap" ng-if="item.mestype=='text'">
+                {{item.mes}}
+              </div>
+              <div class="item item-image" ng-if="item.mestype=='img'">
+                <img src="{{item.mes}}">
+              </div>
+            </div>
+          </div>
+          <div class="col col-left"></div>
+        </div>
+
+        <!--我回复的-->
+        <div  class="row" ng-if="item.account==clientAccount&&item.mestype!='serialize'" ng-class="{true:'left-chat',false:'right-chat'}[item.account!=clientAccount]">
+          <div class="col col-left"></div>
+          <div class="col col-80 col-right">
+            <div class="sendmectrl sendmectrr"> <span class="sendmestip">{{item.sendtime}}</span></div>
+            <div class="card card-chat">
+              <div class="item item-text-wrap" ng-if="item.mestype=='text'">
+                {{item.mes}}
+              </div>
+              <div class="item item-image" ng-if="item.mestype=='img'">
+                <img src="{{item.imgurl}}">
+              </div>
+            </div>
+          </div>
+          <div class="col col-left">
+            <a class="item item-avatar item-avtar-chat" href="#">
+              <img src="{{account.avatar}}">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ion-infinite-scroll distance="0.01%" class="chatint" ng-if="!chat.scollbottom" on-infinite="scollbottom()">
+    </ion-infinite-scroll>
+  </ion-content>
+  <p class="chaterror" ng-if="!manage.connecterr&&chat.error">{{chat.errortext}}</p>
+  <p class="chatshownew" ng-click="shownewend()" ng-if="chat.shownew">有<span>{{chat.newmesnum}}</span>新消息</p>
+  <p class="chatshowold" ng-click="showoldend()" ng-if="chat.showold">还有<span>{{chat.oldmesnum}}</span>信息</p>
+  <div class="bar bar-footer bar-light" ng-if="globaltype!=4||chat.notefocus">
+    <button class="button button-small ion ion-big ion-android-happy"></button>
+    <!--<button class="button button-small ion ion-big ion-image"></button>-->
+    <label class="item-input-wrapper">
+        <textarea placeholder="输入回复信息" ng-model="chat.sendmes"></textarea>
+      </label>
+    <button class="button button-small button-l" ng-class="{true:'button-positive',false:'button-stable-sendmes'}[chat.chatname!=''&&chat.sendmes!='']" ng-if="globaltype==0||globaltype==1||globaltype==3" ng-click="sendonemessage()">发送</button>
+    <button class="button button-small button-l" ng-class="{true:'button-positive',false:'button-stable-sendmes'}[chat.chatname!=''&&chat.sendmes!='']" ng-if="globaltype==2||globaltype==4" ng-click="sendmessage()">发送</button>
+    <button class="button button-small button-l ion ion-ios-arrow-right" ng-if="(globaltype==2||globaltype==4)&&chat.note.account==clientAccount" ng-click="serializemodalopen()"></button>
+  </div>
+  <div class="bar bar-footer bar-light textalign-center" ng-if="globaltype==4&&!chat.notefocus">
+    <button class="button button-small button-positive notefocus" ng-class="{'button-light':chat.notefocus,'button-positive':!chat.notefocus}" ng-click="notefocus()">关注记事才能回复</button>
+  </div>
+</ion-view>

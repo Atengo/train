@@ -1,0 +1,40 @@
+﻿<ion-view hide-back-button="true" nav-direction="forward" class="{{setted.view_bg}}">
+  <ion-nav-title>
+    <div class="seasidetab"><a href="#/app/zone/myfloat" class="act">我的话题</a><a href="#/app/zone/float">漂流话题</a></div>
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-reply-all" nav-direction="back" href="#/app/home/{{hometab.tab}}"></a>
+  </ion-nav-buttons>
+  <ion-content delegate-handle="myfloat" class="n-list">
+    <ion-refresher pulling-text="上一页" ng-if="page.pageNo!=1" on-refresh="getprevpage()"></ion-refresher>
+    <ion-refresher pulling-text="刷新中..." ng-if="page.pageNo==1" on-refresh="getmybottle(1)"></ion-refresher>
+    <ion-list>
+      <div class="list list-inset card card-float" ng-repeat="item in myfloatbottles">
+        <ion-item item="item" class="item item-remove-animate" ng-if="item.settype==2" href="#/app/message/{{item._id}}/2/{{item.meet.length>0?item.meet[0].account:0}}">
+          <h2 ng-if="item.title">{{item.title}}<span class="item-note">
+            {{item.time}}
+          </span></h2>
+          <h2 ng-if="!item.title">{{item.time}}</h2>
+          <p>{{item.introduction}}</p>
+          <span class="badge badge-positive messdata-badge">多</span>
+          <ion-option-button class="button-assertive" ng-click="deletemybottle($index,item._id)">
+            删除
+          </ion-option-button>
+        </ion-item>
+        <ion-item item="item" class="item item-remove-animate" ng-if="item.settype==1" href="#/app/zone/mybottlemeet/{{item._id}}">
+          <h2 ng-if="item.title">{{item.title}}<span class="item-note">
+            {{item.time}}   
+          </span></h2>
+          <h2 ng-if="!item.title">{{item.time}}</h2>
+          <p>{{item.introduction}}</p>
+          <span class="badge badge-positive messdata-badge">单</span>
+          <ion-option-button class="button-assertive" ng-click="deletemyonebottle($index,item._id)">
+            删除
+          </ion-option-button>
+        </ion-item>
+      </div>
+    </ion-list>
+    <p class="textalign-center" ng-if="page.alloaded&&page.pageNo!=1">没有更多数据了</p>
+    <ion-infinite-scroll class="ion-infinite-note" distance="-2%" ng-if="!page.alloaded" on-infinite="getnextpage()"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

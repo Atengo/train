@@ -1,0 +1,40 @@
+﻿<ion-view nav-direction="forward" view-title="好友" class="{{setted.view_bg}}">
+  <ion-content>
+    <ion-refresher pulling-text="更新好友列表..." on-refresh="getfriendlist()"></ion-refresher>
+    <ion-list>
+      <div class="list list-inset">
+        <ion-item class="item-avatar friend-item">
+          <img src="views/img/ship.png">
+          <h2>进入官网</h2>
+        </ion-item>
+        <ion-item class="item-avatar friend-item">
+          <img src="views/img/ship.png">
+          <h2>会员中心</h2>
+        </ion-item>
+        <ion-item class="item-avatar friend-item" ng-click="suggestmodal.show()">
+          <img src="views/img/ship.png">
+          <h2>意见反馈</h2>
+        </ion-item>
+      </div>
+      <div class="list list-inset" ng-repeat="items in friendlist.type" ng-if="friendlist[items].length>0" ng-class="{'list-inset-last':$last}" >
+        <div class="item item-divider">
+          {{items}}
+        </div>
+        <ion-item ng-repeat="item in friends|filter:{type:items}" class="item-avatar friend-item item-remove-animate" href="#/app/message/{{item._id}}/0/{{item.account}}">
+          <img src="{{item.setting.avatar}}">
+          <h2>{{item.setting.name}}
+          <span class="item-note">
+            {{item.time}}
+          </span>
+          </h2>
+          <ion-option-button class="button-assertive" ng-click="deletefriend($index,item,items)">
+            删除
+          </ion-option-button>
+          <ion-option-button class="button-calm" ng-click="firendcard.showcard(item.account)">
+            名片
+          </ion-option-button>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

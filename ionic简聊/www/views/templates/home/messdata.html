@@ -1,0 +1,19 @@
+﻿<ion-view nav-direction="forward" view-title="消息" class="{{setted.view_bg}}">
+  <ion-content>
+    <ion-refresher pulling-text="更新中..." on-refresh="notice.getunread();"></ion-refresher>
+    <ion-list>
+      <div class="list list-inset messdata" ng-repeat="item in notice.messdata|orderBy:'sortime':true" ng-class="{true:'list-inset-last',false:''}[$last]">
+        <ion-item class="item-avatar item-remove-animate" href="#/app/message/{{item.fromid}}/{{item.type}}/{{item.fromname}}">
+          <img src="{{item.avatar}}">
+          <h2>{{item.niname}}<span class="item-note">
+            {{item.time}}
+          </span></h2>
+          <p ng-if="item.mes.mestype=='text'">{{item.mes.mes}}</p>
+          <p ng-if="item.mes.mestype=='img'">[图片]</p>
+          <span class="badge badge-assertive messdata-badge" ng-show="item.count>0&&item.count<100">{{item.count}}</span>
+          <span class="badge badge-assertive messdata-badge" ng-show="item.count>99">99+</span>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

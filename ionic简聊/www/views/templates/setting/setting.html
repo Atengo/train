@@ -1,0 +1,82 @@
+﻿<ion-view nav-direction="forward" hide-back-button="true" view-title="设置" class="{{setted.view_bg}}">
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-reply-all" nav-direction="back" ng-show="!set.issetting" href="#/app/home/{{hometab.tab}}"></a>
+    <button ng-click="set.savesetting()" ng-show="set.issetting" class="button button-cl">保存</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-refresher pulling-text="刷新中..." on-refresh="settingrefresh()"></ion-refresher>
+    <div class="list card card-center card-set">
+      <ion-item class="item item-avtar-meet">
+        <img src="{{avatar}}">
+        <p class="set-basetitle">基本信息</p>
+        <p>{{info.name}}/{{info.sex}}<br />{{info.time}}</p>
+        <button class="button ion ion-edit button-clear button-positive" ng-click="setbase_modal.show()"></button>
+      </ion-item>
+    </div>
+    <div class="list card card-cen card-set">
+      <div class="item item-divider">
+        个性签名
+      </div>
+      <ion-item class="item">
+        <p class="wrap-normal">{{info.sign}}</p>
+      </ion-item>
+    </div>
+    <div class="list card card-cen card-set">
+      <ion-item class="item item-edit">
+        <h2>出生日期<city-Picker tag="-" backdrop=true backdrop-click-to-close=false ok-text="确定" citydata="{{info.birthday}}" handle="0"datatype="date" button-Clicked="editbirthday()"></city-Picker></h2>
+      </ion-item>
+      <ion-item class="item item-edit">
+        <h2>出生地<city-Picker tag="-" backdrop=true backdrop-click-to-close=false ok-text="确定" citydata="{{info.birthcity}}" handle="1"datatype="city" button-Clicked="editbirthcity()"></city-Picker></h2>
+      </ion-item>
+      <ion-item class="item item-edit">
+        <h2>居住地<city-Picker tag="-" backdrop=true backdrop-click-to-close=false ok-text="确定" citydata="{{info.livecity}}" handle="2"datatype="city" button-Clicked="editlivecity()"></city-Picker></h2>
+      </ion-item>
+      <div class="item item-divider">
+        提醒设置
+      </div>
+      <ion-toggle ng-checked="info.voile" ng-model="info.voile" ng-click="checksetting()">
+        声音
+      </ion-toggle>
+      <ion-toggle ng-checked="info.shock" ng-model="info.shock" ng-click="checksetting()">
+        震动
+      </ion-toggle>
+    </div>
+    <div class="padding">
+      <button class="button-full button button-positive">软件帮助手册</button>
+      <button class="button-full button button-positive">软件使用条款</button>
+    </div>
+  </ion-content>
+  <script id="templates/setbase_modal.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">修改基本信息</h1>
+        <button class="button button-clear button-primary" ng-click="resetbaseinfo()">取消</button>
+      </ion-header-bar>
+      <ion-content class="padding">
+        <div class="list">
+          <ion-item class="item item-avtar-meet">
+            <span class="set-headimage" ng-click="addAttachment()">
+                <img src="{{avatar}}">
+                <span ng-hide="onupload" class="ion ion-edit"></span>
+            <span class="onupload" ng-show="onupload">{{uploadProgress}}</span>
+            </span>
+            <span class="set-account"><p>账号：{{info.account}}<br/></p></span>
+            <p class="cb"></p>
+          </ion-item>
+          <label class="item item-input">
+                 <span class="input-label input-label-note" placeholder="输入昵称">昵称：</span>
+                 <input type="text" ng-model="info.name" ng-keyup="checksetting();">
+              </label>
+          <div class="item" ng-click="choosesex()">
+            性别:<span class="item-note">{{info.sex}}</span>
+          </div>
+          <label class="item item-input item-stacked-label">
+               <span class="input-label">签名：</span>
+               <textarea placeholder="输入签名" class="edit-sign" ng-model="info.sign" ng-keyup="checksetting();"></textarea>
+              </label>
+          <button class="button button-full button-positive" ng-click="setbase_modal.hide()">确定</button>
+        </div>
+      </ion-content>
+    </ion-modal-view>
+  </script>
+</ion-view>

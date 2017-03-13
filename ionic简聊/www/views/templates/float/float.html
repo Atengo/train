@@ -1,0 +1,42 @@
+﻿<ion-view hide-back-button="true" nav-direction="forward" class="{{setted.view_bg}}">
+  <ion-nav-title>
+    <div class="seasidetab"><a href="#/app/zone/myfloat">我的话题</a><a href="#/app/zone/float" class="act">漂流话题</a></div>
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-reply-all" nav-direction="back" href="#/app/home/{{hometab.tab}}"></a>
+  </ion-nav-buttons>
+  <ion-content delegate-handle="float"  class="n-list">
+    <ion-refresher pulling-text="上一页" ng-if="page.pageNo!=1" on-refresh="getprevpage()"></ion-refresher>
+    <ion-refresher pulling-text="刷新中..." ng-if="page.pageNo==1" on-refresh="getfloatbottle(1)"></ion-refresher>
+    <ion-list>
+      <div class="list list-inset card card-float" ng-repeat="item in floatbottles">
+        <ion-item item="item" class="item item-avatar item-remove-animate" ng-if="item.settype==1" href="#/app/message/{{item.meet._id}}/1/{{item.account}}">
+          <img src="{{item.setting.setting.avatar}}">
+          <h2>{{item.setting.setting.name}}<span class="item-note">
+            {{item.time}}
+          </span></h2>
+          <p>{{item.introduction}}</p>
+          <span class="badge badge-positive messdata-badge" ng-if="item.state!=0">单</span>
+          <span class="badge badge-assertive messdata-badge" ng-if="item.state==0">删</span>
+          <ion-option-button class="button-assertive" ng-click="deletefloatonebottle($index,item.meet._id)">
+            删除
+          </ion-option-button>
+        </ion-item>
+        <ion-item item="item" class="item item-avatar item-remove-animate" ng-if="item.settype==2" href="#/app/message/{{item._id}}/2/{{item.account}}">
+          <img src="{{item.setting.setting.avatar}}">
+          <h2>{{item.setting.setting.name}}<span class="item-note">
+            {{item.time}}
+          </span></h2>
+          <p>{{item.introduction}}</p>
+          <span class="badge badge-positive messdata-badge" ng-if="item.state!=0">多</span>
+          <span class="badge badge-assertive messdata-badge" ng-if="item.state==0">删</span>
+          <ion-option-button class="button-assertive" ng-click="deletefloatbottle($index,item._id)">
+            删除
+          </ion-option-button>
+        </ion-item>
+      </div>
+    </ion-list>
+     <p class="textalign-center" ng-if="page.alloaded&&page.pageNo!=1">没有更多数据了</p>
+    <ion-infinite-scroll class="ion-infinite-note" distance="-2%" ng-if="!page.alloaded" on-infinite="getnextpage()"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

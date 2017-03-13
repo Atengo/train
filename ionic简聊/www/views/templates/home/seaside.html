@@ -1,0 +1,24 @@
+﻿<ion-view nav-direction="forward" title="话题" class="{{setted.view_bg}}">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon ion-plus icon-newbottle" ng-click="addnewbottle()"></button>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-refresher pulling-text="打捞中..." on-refresh="getfloat()"></ion-refresher>
+    <ion-list ng-repeat="item in floatBottle">
+      <div class="list list-inset card card-seaside">
+        <ion-item class="item item-avatar item-remove-animate">
+          <img src="{{item.avatar}}" ng-click="firendcard.showcard(item.account)"/>
+          <h2>{{item.create_name}}<sub>{{item.create_time}}</sub></h2>
+          <span class="p-little">
+            {{item.sign}}
+          </span>
+        </ion-item>
+        <div class="item item-body" ng-click="readbottle(item,$index)">
+          <a class="item-content">
+            <p class="bottle_intro">{{item.intro}}</p>
+          </a>
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

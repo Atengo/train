@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title><%= title %> - 快乐聊天</title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet">
+  </head>
+  <body>
+  
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">快乐聊天应用</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="/">首页</a></li>
+              <% if (!user) { %>
+                <li><a href="/login">登录</a></li>
+                <li><a href="/reg">注册</a></li>
+              <% } else { %>
+                <li><a href='javascript:;'>欢迎您,<%= user%></a></li>
+                <li><a href="/logout">退出</a></li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+      <%- body %>
+      <hr />
+      <footer style="text-align:center;">
+        <p><a href="javascript:;">Meteoric</a> 2015</p>
+      </footer>
+    </div>
+  </body>
+  <script src="/javascripts/jquery.js"></script>
+  <script src="/javascripts/bootstrap.js"></script>
+</html>
